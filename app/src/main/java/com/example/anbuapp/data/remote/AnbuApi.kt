@@ -3,6 +3,7 @@ package com.example.anbuapp.data.remote
 
 import com.example.anbuapp.BuildConfig
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface AnbuApi {
@@ -14,11 +15,34 @@ interface AnbuApi {
     @GET("movie/now_playing?api_key=$API_KEY")
     suspend fun getNowPlayingMovies(
         @Query("page") position: Int
-    ) : MovieResponse
+    ): MovieResponse
 
     @GET("search/movie?api_key=$API_KEY")
     suspend fun searchMovies(
         @Query("query") query: String,
         @Query("page") page: Int
-    ):MovieResponse
+    ): MovieResponse
+
+    @GET("discover/movie?api_key=$API_KEY")
+    suspend fun searchMoviesByGenre(
+        @Query("with_genres") genre: String,
+        @Query("page") page: Int
+    ): MovieResponse
+
+    @GET("genre/movie/list?api_key=$API_KEY")
+    suspend fun getGenres(
+        @Query("page") page: Int
+    ): GenreResponse
+
+    @GET("movie/{id}/reviews?api_key=$API_KEY")
+    suspend fun getReview(
+        @Path("id") id: String,
+        @Query("page") page: Int
+    ): ReviewResponse
+
+    @GET("movie/{id}/videos?api_key=$API_KEY")
+    suspend fun getTrailer(
+        @Path("id") id: String,
+        @Query("page") page: Int
+    ): TrailerResponse
 }

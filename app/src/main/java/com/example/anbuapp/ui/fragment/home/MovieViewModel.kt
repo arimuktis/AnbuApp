@@ -1,5 +1,6 @@
 package com.example.anbuapp.ui.fragment.home
 
+import android.util.Log
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
@@ -17,20 +18,34 @@ class MovieViewModel @ViewModelInject constructor(
 
     companion object {
         private const val CURRENT_QUERY = "current_query"
+        private const val CURRENT_GENRES = "current_query"
         private const val EMPTY_QUERY = ""
     }
 
     private val currentQuery = state.getLiveData(CURRENT_QUERY, EMPTY_QUERY)
     val movies = currentQuery.switchMap { query ->
-        if (!query.isEmpty()) {
-            repository.getSearchMovies(query).cachedIn(viewModelScope)
+        if (query.contains("|")) {
+            repository.getMovieByGenre(query)
         } else {
-            repository.getNowPlayingMovies().cachedIn(viewModelScope)
+            if (query.isNotEmpty()) {
+                repository.getSearchMovies(query)
+            } else {
+                repository.getNowPlayingMovies().cachedIn(viewModelScope)
+            }
         }
     }
 
-    fun searchMovies(query : String){
+    fun searchMovies(query: String) {
         currentQuery.value = query
+    }
+
+    fun searchMoviesByGenre(query: String) {
+
+        if (query.isEmpty()) {
+            currentQuery.value = query
+        } else {
+            currentQuery.value = "$query|0"
+        }
     }
 
 }

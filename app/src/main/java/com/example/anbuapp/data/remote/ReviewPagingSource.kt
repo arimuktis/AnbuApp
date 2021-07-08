@@ -6,21 +6,20 @@ import java.io.IOException
 
 private const val STARTING_PAGE_INDEX = 1
 
-class MoviePagingSource(
+class ReviewPagingSource(
     private val anbuApi: AnbuApi,
-    private val query: String?
-) : PagingSource<Int, Movie>() {
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
+    private val id: String,
+) : PagingSource<Int, Result>() {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
             val position = params.key ?: STARTING_PAGE_INDEX
-            val response = if(query!=null) anbuApi.searchMovies(query, position) else
-                anbuApi.getNowPlayingMovies(position)
-            val movies = response.results
+            val response = anbuApi.getReview(id, position)
+            val reviews = response.results
 
             LoadResult.Page(
-                data = movies,
+                data = reviews,
                 prevKey = if (position == STARTING_PAGE_INDEX) null else position - 1,
-                nextKey = if (movies.isEmpty()) null else position + 1
+                nextKey = if (reviews.isEmpty()) null else position + 1
             )
         } catch (e: IOException) {
             LoadResult.Error(e)

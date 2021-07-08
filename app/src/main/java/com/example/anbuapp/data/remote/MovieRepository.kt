@@ -15,7 +15,17 @@ class MovieRepository @Inject constructor(private val anbuApi: AnbuApi){
                 maxSize = 20,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = {MoviePagingSource(anbuApi,null)}
+            pagingSourceFactory = {MoviePagingSource(anbuApi,null,null)}
+        ).liveData
+
+    fun getMovieByGenre(genre : String) =
+        Pager(
+            config =  PagingConfig(
+                pageSize = 5,
+                maxSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {MoviePagingSource(anbuApi,null,genre)}
         ).liveData
 
     fun getSearchMovies(query: String) =
@@ -25,6 +35,6 @@ class MovieRepository @Inject constructor(private val anbuApi: AnbuApi){
                 maxSize = 20,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = {MoviePagingSource(anbuApi,query)}
+            pagingSourceFactory = {MoviePagingSource(anbuApi,query,null)}
         ).liveData
 }
