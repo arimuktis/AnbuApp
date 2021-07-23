@@ -8,4 +8,5 @@ data class TrailerResponse(
     val id: Int, // 508943
     @SerializedName("results")
     val results: List<ResultX>
+
 )

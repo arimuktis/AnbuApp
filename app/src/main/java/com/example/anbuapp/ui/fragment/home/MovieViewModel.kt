@@ -40,7 +40,6 @@ class MovieViewModel @ViewModelInject constructor(
     }
 
     fun searchMoviesByGenre(query: String) {
-
         if (query.isEmpty()) {
             currentQuery.value = query
         } else {

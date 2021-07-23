@@ -45,4 +45,9 @@ interface AnbuApi {
         @Path("id") id: String,
         @Query("page") page: Int
     ): TrailerResponse
+
+    @GET("movie/{id}/videos?api_key=$API_KEY")
+    suspend fun getTrailers(
+        @Path("id") id: String
+    ): TrailerResponse
 }

@@ -2,12 +2,12 @@ package com.example.anbuapp.ui.fragment.details
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.cachedIn
 import com.example.anbuapp.data.remote.DetailRepository
+import com.example.anbuapp.data.remote.ResultX
+import com.example.anbuapp.data.remote.TrailerResponse
+import kotlinx.coroutines.launch
 
 class DetailViewModel @ViewModelInject constructor(
     private val repository: DetailRepository,
@@ -21,6 +21,7 @@ class DetailViewModel @ViewModelInject constructor(
         private const val EMPTY_QUERY = ""
     }
 
+    private val _response = MutableLiveData<TrailerResponse>()
     private val currentQuery = state.getLiveData(CURRENT_QUERY, EMPTY_QUERY)
     private val currentTrailer = state.getLiveData(CURRENT_TRAILER, EMPTY_QUERY)
     val reviews = currentQuery.switchMap { query ->
@@ -35,6 +36,17 @@ class DetailViewModel @ViewModelInject constructor(
             repository.getTrailer(query)
         } else {
             repository.getTrailer(query).cachedIn(viewModelScope)
+        }
+    }
+
+    val trailers : LiveData<TrailerResponse>
+        get() = _response
+
+
+
+   fun getTrailers(query: String) = viewModelScope.launch {
+        repository.getTrailers(query).let { response ->
+           _response.postValue(response)
         }
     }
 

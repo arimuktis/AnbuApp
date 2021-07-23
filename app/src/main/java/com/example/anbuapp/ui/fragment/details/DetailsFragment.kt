@@ -18,8 +18,11 @@ import com.example.anbuapp.R
 import com.example.anbuapp.data.remote.Result
 import com.example.anbuapp.databinding.FragmentDetailsBinding
 import com.example.anbuapp.ui.fragment.home.MovieLoadStateAdapter
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
 import jp.wasabeef.glide.transformations.BlurTransformation
+
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.fragment_details), ReviewAdapter.OnItemClickListener {
@@ -109,7 +112,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details), ReviewAdapter.OnIte
             )
 
 
-
             //Binding Button Retry
             btnRetry.setOnClickListener {
                 adapter.retry()
@@ -143,13 +145,22 @@ class DetailsFragment : Fragment(R.layout.fragment_details), ReviewAdapter.OnIte
 
             }
 
+            lifecycle.addObserver(youtube)
+
+            viewModel.trailers.observe(viewLifecycleOwner) {
+                youtube.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        youTubePlayer.cueVideo(it.results[0].key, 0f)
+                    }
+                })
+            }
+
+
+
             binding.rvReview.scrollToPosition(0)
             viewModel.getReview(movie.id.toString())
             viewModel.getTrailer(movie.id.toString())
-
-
-//            getLifecycle().addObserver(youtube)
-//            youtube.addYouTubePlayerListener(youTubePlayerListener = li)
+            viewModel.getTrailers(movie.id.toString())
 
         }
     }

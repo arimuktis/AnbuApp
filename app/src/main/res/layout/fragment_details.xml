@@ -23,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:autoPlay="false"
-            app:showYouTubeButton="false"
-            app:videoId="YdAIBlPVe9s" />
+            app:showYouTubeButton="false" />
 
 
             <RelativeLayout
@@ -130,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="Movie Tidak Ditemukan"
+                        android:text="Tidak Ada Review"
                         android:visibility="gone"
                         tools:visibility="visible" />
                 </RelativeLayout>

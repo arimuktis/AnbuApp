@@ -28,5 +28,8 @@ class DetailRepository @Inject constructor(private val anbuApi: AnbuApi) {
             pagingSourceFactory = { TrailerPagingSource(anbuApi, id) }
         ).liveData
 
-    suspend fun getasda(id:String) = anbuApi.getTrailer(id,1)
+    suspend fun getTrailers(id: String) = anbuApi.getTrailers(id)
+
+
+
 }
