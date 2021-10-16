@@ -1,111 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.details.DetailsFragment">
+    tools:context=".ui.fragment.DetailsFragment">
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:visibility="gone" />
 
-    <LinearLayout
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        app:autoPlay="false"
+        app:showYouTubeButton="false" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_below="@+id/youtube">
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/youtube"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:autoPlay="false"
-            app:showYouTubeButton="false" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.arimukti.anbuapp.ui.widget.CustomTextView
+                        android:id="@+id/tv_movie_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_poster"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="The Good Doctor"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="20sp"
+                        app:fontStyleCustom="bold"
+                        tools:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:orientation="horizontal">
+
+                        <com.arimukti.anbuapp.ui.widget.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="98% Match"
+                            android:textColor="@color/green"
+                            android:textSize="16sp"
+                            app:fontStyleCustom="regular" />
+
+                        <com.arimukti.anbuapp.ui.widget.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="12dp"
+                            android:text="2021"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textSize="16sp"
+                            app:fontStyleCustom="bold" />
+
+                        <com.arimukti.anbuapp.ui.widget.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="12dp"
+                            android:text="12 Episode"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textSize="16sp"
+                            app:fontStyleCustom="regular" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toggle_favorite"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ic_baseline_favorite_24"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+
+
+            </LinearLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="?android:attr/colorButtonNormal"
+                android:padding="10dp"
+                android:text="Play"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="16sp"
+                app:icon="@drawable/ic_play_24"
+                app:iconGravity="textStart"
+                app:iconTint="?android:attr/textColorSecondary" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/download_button"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:padding="10dp"
+                android:text="Download"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                app:icon="@drawable/ic_download_24"
+                app:iconGravity="textStart"
+                app:iconTint="?android:attr/textColorPrimary"
+                app:strokeColor="?android:attr/textColorPrimary" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
-                <ImageView
-                    android:id="@+id/iv_poster"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:visibility="gone"
-                    tools:layout_height="200dp"
-                    tools:src="@color/primaryColor" />
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toggle_favorite"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="16dp"
-                    android:background="@drawable/favorite_toggle"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:textOff=""
-                    android:textOn=""
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/tv_movie_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/iv_poster"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:visibility="gone"
-                    tools:text="Avengers"
-                    tools:visibility="visible" />
-
-                <TextView
+                <com.arimukti.anbuapp.ui.widget.CustomTextView
                     android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_movie_title"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:textColor="@color/white"
-                    android:visibility="gone"
-                    tools:text="Synopsis"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="After a sudden global event wipes out all electronics and takes away humankind’s ability to sleep, chaos quickly begins to consume the world. Only Jill, an ex-soldier with a troubled past, may hold the key to a cure in the form of her own daughter. The question is, can Jill safely deliver her daughter and save the world before she herself loses her mind."
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="14sp"
+                    app:fontStyleCustom="regular"
+                    tools:visibility="visible" />
+
+                <com.arimukti.anbuapp.ui.widget.CustomTextView
+                    android:id="@+id/tv_additional"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_description"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="55dp"
+                    android:text="Cast: Freddie Highmore, Antonia Thomas, Nicholas Gonzalez Antonia Thomas, Nicholas Gonzal"
+                    android:textColor="@color/light_gray"
+                    android:textSize="12sp"
+                    app:fontStyleCustom="regular"
+                    tools:visibility="visible" />
+
+                <com.arimukti.anbuapp.ui.widget.CustomTextView
+                    android:id="@+id/tv_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_additional"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="55dp"
+                    android:text="Creator: David Shore"
+                    android:textColor="@color/light_gray"
+                    android:textSize="12sp"
+                    app:fontStyleCustom="light"
                     tools:visibility="visible" />
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/tv_description">
+                    android:layout_below="@+id/tv_author">
 
-                    <TextView
-                        android:id="@+id/text_user_review"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonSession"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:text="User Review"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:gravity="start"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="Season 1"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="16sp"
+                        app:fontStyleCustom="bold"
+                        app:icon="@drawable/ic_arrow_down_24"
+                        app:iconGravity="textEnd"
+                        app:iconTint="?android:attr/textColorPrimary" />
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_review"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@+id/text_user_review"
+                        android:layout_below="@+id/buttonSession"
                         android:nestedScrollingEnabled="false"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/item_review" />
 
-                    <TextView
+                    <com.arimukti.anbuapp.ui.widget.CustomTextView
                         android:id="@+id/tv_failed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,6 +241,7 @@
                         android:layout_centerHorizontal="true"
                         android:text="Data Gagal Dimuat"
                         android:visibility="gone"
+                        app:fontStyleCustom="regular"
                         tools:visibility="visible" />
 
                     <Button
@@ -124,23 +253,28 @@
                         android:visibility="gone"
                         tools:visibility="visible" />
 
-                    <TextView
+                    <com.arimukti.anbuapp.ui.widget.CustomTextView
                         android:id="@+id/tv_not_found"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="Tidak Ada Review"
                         android:visibility="gone"
+                        app:fontStyleCustom="regular"
                         tools:visibility="visible" />
                 </RelativeLayout>
 
             </RelativeLayout>
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_gravity="center" />
-</FrameLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,26 +8,28 @@
     android:padding="10dp">
 
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blackAlpha"
-        android:orientation="vertical">
-        <TextView
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.arimukti.anbuapp.ui.widget.CustomTextView
             android:id="@+id/uname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
+            app:fontStyleCustom="bold"
             tools:text="Anbu" />
 
         <View
             android:layout_width="match_parent"
-            android:background="@color/white"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp"
+            android:background="@color/white" />
 
-        <TextView
+        <com.arimukti.anbuapp.ui.widget.CustomTextView
             android:id="@+id/review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,9 +37,10 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="normal"
+            app:fontStyleCustom="regular"
             tools:text="waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!waw bagus banget anjeng!" />
 
 
     </LinearLayout>
 
-    </LinearLayout>
+</LinearLayout>

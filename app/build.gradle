@@ -12,7 +12,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.anbuapp"
+        applicationId "com.arimukti.anbuapp"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -87,6 +87,9 @@ dependencies {
 
     // Youtube Player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+
+    // Exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.14.0'
 
     //blurr
     implementation 'jp.wasabeef:glide-transformations:4.0.0'

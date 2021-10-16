@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Custom TextView -->
+    <declare-styleable name="CustomTextView" >
+        <attr name="fontStyleCustom" format="enum">
+            <enum name="regular" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="light" value="2"/>
+
+        </attr>
+    </declare-styleable>
+
+    <!-- Custom EditText -->
+    <declare-styleable name="CustomEditText" >
+        <attr name="fontStyleCustomEdit" format="enum">
+            <enum name="regular" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="light" value="2"/>
+
+        </attr>
+    </declare-styleable>
+
+    <!-- Custom Button -->
+    <declare-styleable name="CustomButton" >
+        <attr name="fontStyleCustomButton" format="enum">
+            <enum name="regular" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="light" value="2"/>
+
+        </attr>
+    </declare-styleable>
+
+    <!-- Rounded ImageView -->
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="mutate_background" format="boolean" />
+        <attr name="oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <declare-styleable name="SlidingTabLayout">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="shouldExpand" format="boolean" />
+        <attr name="tabBackground" format="reference" />
+        <attr name="tabBackgroundTextViewId" format="reference"/>
+    </declare-styleable>
+
+
+</resources>

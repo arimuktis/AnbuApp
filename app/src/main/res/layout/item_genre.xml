@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,7 +14,8 @@
         android:orientation="horizontal"
         android:padding="7dp">
 
-        <TextView
+        <com.arimukti.anbuapp.ui.widget.CustomTextView
+            app:fontStyleCustom="regular"
             android:id="@+id/text_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
