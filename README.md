@@ -1,7 +1,7 @@
 # AnbuApp
-Mandatory Task Option 1 for Recruitment on Indocyber Global Teknologi.
+Mandatory Task Option 1 for Recruitment on Salt.
 
-Build for Android with Kotlin using Design Pattern MVVM (Model View ViewModel) App for showing Movies using API from https://api.themoviedb.org
+Build for Android with Kotlin using Design Pattern MVVM (Model View ViewModel) App for showing Movies using API from https://newsapi.org/
 
 Dependency: using Android Jetpack
   - Retrofit + GSON
@@ -17,4 +17,4 @@ Dependency: using Android Jetpack
   - Blurr Image
  
  # Preview
-![](https://imgur.com/ZbQFNhU.jpg)      ![](https://imgur.com/Y13p3ge.jpg)      ![](https://imgur.com/SiBqXRP.jpg)
+![](https://imgur.com/ZbQFNhU.jpg)      ![](https://i.imgur.com/5n0oVBk.png)      ![](https://i.imgur.com/g39F6D0.png)
