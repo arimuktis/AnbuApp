@@ -17,4 +17,4 @@ Dependency: using Android Jetpack
   - Blurr Image
  
  # Preview
-![](https://imgur.com/ZbQFNhU.jpg)      ![](https://i.imgur.com/5n0oVBk.png)      ![](https://i.imgur.com/g39F6D0.png)
+![](https://imgur.com/ZbQFNhU.jpg)      ![](https://i.imgur.com/5n0oVBkm.png)      ![](https://i.imgur.com/g39F6D0m.png)
