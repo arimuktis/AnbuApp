@@ -1,5 +1,5 @@
 # AnbuApp
-Mandatory Task Option 1 for Recruitment on Salt.
+Mandatory Task Option 1 for Recruitment.
 
 Build for Android with Kotlin using Design Pattern MVVM (Model View ViewModel) App for showing Movies using API from https://newsapi.org/
 
