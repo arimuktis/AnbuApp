@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_details">
         <argument
             android:name="movie"
-            app:argType="com.arimukti.anbuapp.data.remote.Movie" />
+            app:argType="com.arimukti.anbuapp.data.model.Movie" />
     </fragment>
 
 </navigation>
